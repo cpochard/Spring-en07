@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Chargement du fichier de properties dans le contexte Spring -->
+	
+	<context:property-placeholder location="spring/database.properties"/>
+	<context:component-scan base-package="com.banque.dao, com.banque.service" />
+
+	<!-- Declaration de notre configuration de DAO parent -->
+	
+	<!--  <bean id="abstractDAO" class = "com.banque.dao.impl.AbstractDAO" abstract="true" >
+		<property name="dbDriver" value="${tmpDBdriver}"/>
+		<property name="dbUrl" value="${tmpDBurl}"/>
+		<property name="dbLogin" value="${tmpDBlogin}"/>
+		<property name="dbPwd" value="${tmpDBpwd}"/>
+	</bean> -->
+	
+	<!-- Declaration de nos DAO enfants -->
+	
+	<!--  <bean id="compteDAO" class="com.banque.dao.impl.CompteDAO" parent="abstractDAO">
+	</bean>
+	<bean id="operationDAO" class="com.banque.dao.impl.OperationDAO" parent="abstractDAO">
+	</bean>
+	<bean id="utilisateurDAO" class="com.banque.dao.impl.UtilisateurDAO" parent="abstractDAO">
+	</bean> -->
+	
+</beans>

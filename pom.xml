@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.banque</groupId>
+  <artifactId>en09.spring</artifactId>
+  <version>1.0.0</version>
+
+  <developers>
+    <developer>
+      <id>rf</id>
+      <name>Ferret Renaud</name>
+      <email>renaud91@gmail.com</email>
+      <url>http://ferretrenaud.fr</url>
+    </developer>
+    <developer>
+      <id>kb</id>
+      <name>Brifault Karine</name>
+      <email>karine.brifault@gmail.com</email>
+    </developer>
+    <developer>
+      <id>av</id>
+      <name>Adrien Vossough</name>
+      <email>adrienvossough@gmail.com</email>
+      <url>https://semifir.com/</url>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Simple Machines License</name>
+      <url>http://www.simplemachines.org/about/smf/license.php</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jdk.source>1.6</jdk.source>
+    <jdk.target>1.6</jdk.target>
+
+    <version.spring>3.2.18.RELEASE</version.spring>
+    <version.junit>4.12</version.junit>
+    <version.log4j>1.2.17</version.log4j>
+    <version.mysql>5.1.44</version.mysql>
+	<!-- Version qui va avec le Spring 3.2.18.RELEASE -->
+    <version.aspectj>1.7.4</version.aspectj>
+
+    <!-- https://maven.apache.org/plugins/index.html -->
+    <maven-compiler-plugin-version>3.7.0</maven-compiler-plugin-version>
+    <maven-jar-plugin-version>3.0.2</maven-jar-plugin-version>
+    <maven-surefire-plugin-version>2.20</maven-surefire-plugin-version>
+
+    <!-- Sonar -->
+    <sonar.java.source>${jdk.source}</sonar.java.source>
+    <sonar.language>java</sonar.language>
+    <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
+    <sonar.import_unknown_files>true</sonar.import_unknown_files>
+    <sonar.junit.reportsPath>${basedir}/target/surefire-reports</sonar.junit.reportsPath>
+
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin-version}</version>
+        <configuration>
+          <source>${jdk.source}</source>
+          <target>${jdk.target}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven-jar-plugin-version}</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <!-- Indique la classe qui a la methode main -->
+              <mainClass>com.banque.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin-version}</version>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Afin d'éviter d'indiquer tous les éléments du Spring -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${version.spring}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.2</version>
+      </dependency>
+
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>${version.log4j}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${version.aspectj}</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${version.junit}</version>
+      <!-- JUnit se place toujours avec un scope en test -->
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${version.mysql}</version>
+    </dependency>
+
+  </dependencies>
+
+  <description>Realisation d'un aspect pour le Log. Ennoncés.</description>
+</project>
